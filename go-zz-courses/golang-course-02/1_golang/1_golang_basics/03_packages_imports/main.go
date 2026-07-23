@@ -1,7 +1,7 @@
 package main
 
-// imports brings external packages into the file that u r working
-// where actually u need it
+// import brings packages into the current file.
+// Imported packages are available only in the file where they are imported.
 
 import (
 	"fmt"
@@ -9,8 +9,6 @@ import (
 )
 
 func main() {
-	// packageName.Functionname -> call a function from a package
-
-	fmt.Println("sqrt(25)", math.Sqrt(25))
-
+	// packageName.FunctionName() calls an exported function from a package.
+	fmt.Println("Sqrt(25):", math.Sqrt(25))
 }

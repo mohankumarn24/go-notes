@@ -2,16 +2,17 @@ package main
 
 import "fmt"
 
-func divide(a int, b int) (john int, sangam int) {
-	john = a / b
-	sangam = a + b
+// Function with named return values
+func divide(a, b int) (quotient, remainder int) {
+	quotient = a / b
+	remainder = a % b
 
 	return
 }
 
 func main() {
+	quotient, remainder := divide(10, 3)
 
-	q, r := divide(10, 10)
-	fmt.Println(q, r)
-
+	fmt.Println("Quotient:", quotient)
+	fmt.Println("Remainder:", remainder)
 }

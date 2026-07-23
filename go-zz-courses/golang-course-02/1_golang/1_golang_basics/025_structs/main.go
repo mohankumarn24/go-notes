@@ -2,8 +2,7 @@ package main
 
 import "fmt"
 
-// struct groups related fields into one type
-
+// Struct groups related fields into one custom type.
 type User struct {
 	ID    int
 	Name  string
@@ -12,7 +11,7 @@ type User struct {
 }
 
 func main() {
-
+	// Create a struct using field names.
 	u1 := User{
 		ID:    1,
 		Name:  "Sangam",
@@ -20,18 +19,21 @@ func main() {
 		Age:   100,
 	}
 
-	fmt.Println(u1, u1.ID, u1.Email)
+	fmt.Println("User 1:", u1)
+	fmt.Println("ID:", u1.ID)
+	fmt.Println("Email:", u1.Email)
 
-	// mutable by default
+	// Struct fields are mutable by default.
 	u1.Age = 200
 
-	fmt.Println(u1)
+	fmt.Println("Updated User 1:", u1)
 
+	// Partial initialization.
+	// Unspecified fields receive their zero values.
 	u2 := User{
-		Name:  "john",
-		Email: "dsfsdfs",
+		Name:  "John",
+		Email: "john@gmail.com",
 	}
 
-	fmt.Println("partial user", u2)
-
+	fmt.Println("User 2:", u2)
 }

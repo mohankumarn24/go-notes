@@ -7,46 +7,45 @@ import (
 )
 
 func main() {
+	// Go doesn't use exceptions for normal failures.
+	// Functions return errors as normal return values.
 
-	// go dont use exceptions for normal failures
-	// functions -> return errors as normal return values
-
-	// val, err := something()
-	// if err != nil {handle the err}
+	// value, err := someFunction()
+	// if err != nil {
+	//     handle the error
+	// }
 
 	if err := run(); err != nil {
+		// log.Fatal prints the error and exits the program.
 		log.Fatal(err)
 	}
-
 }
 
 func run() error {
-
-	input := "30"
+	input := "3"
 
 	level, err := parseLevel(input)
 	if err != nil {
 		return err
 	}
 
-	fmt.Println("selected level", level)
+	fmt.Println("Selected Level:", level)
 	return nil
-
 }
 
 func parseLevel(s string) (int, error) {
-	// (value, err)
-	// nil error -> success
-	// non nil -> failure
+	// (value, error)
+	// nil error     -> success
+	// non-nil error -> failure
 
-	// pattern
 	n, err := strconv.Atoi(s)
 	if err != nil {
-		return 0, fmt.Errorf("level must be a number")
+		// %w wraps the original error
+		return 0, fmt.Errorf("level must be a number: %w", err)
 	}
 
 	if n < 1 || n > 5 {
-		return 0, fmt.Errorf("level must be 1 and 5")
+		return 0, fmt.Errorf("level must be between 1 and 5")
 	}
 
 	return n, nil

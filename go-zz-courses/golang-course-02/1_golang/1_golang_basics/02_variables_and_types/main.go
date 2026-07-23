@@ -3,17 +3,16 @@ package main
 import "fmt"
 
 func main() {
-
-	// var name type
-	var channelName string
-	channelName = "AceDevHub"
-
+	// var variableName type = value
 	var year int = 2026
-
-	fmt.Println("Channel:", channelName)
 	fmt.Println("Year:", year)
 
 	var rating float64 = 4.8
-	fmt.Println("rating:", rating)
+	fmt.Println("Rating:", rating)
 
+	// Declaration without initialization
+	// Zero value is assigned automatically.
+	var channelName string
+	channelName = "AceDevHub"
+	fmt.Println("Channel:", channelName)
 }

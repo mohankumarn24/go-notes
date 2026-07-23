@@ -3,31 +3,99 @@ package main
 import "fmt"
 
 func main() {
+	// ==============================
+	// Slice Creation using make()
+	// make([]T, length, capacity)
+	// ==============================
 
-	//make([]T, len, cap)
 	scores := make([]int, 0, 5)
 
-	fmt.Println(scores, len(scores), cap(scores))
+	fmt.Println("Initial Slice")
+	fmt.Println("scores  :", scores)
+	fmt.Println("length  :", len(scores))
+	fmt.Println("capacity:", cap(scores))
+	fmt.Println()
+
+	// ==============================
+	// Append one element
+	// ==============================
 
 	scores = append(scores, 100)
-	fmt.Println("after appending 100", scores)
 
-	scores = append(scores, 200, 3000)
-	fmt.Println("after appending 200, 3000", scores)
+	fmt.Println("After append(100)")
+	fmt.Println(scores)
+	fmt.Println("length  :", len(scores))
+	fmt.Println("capacity:", cap(scores))
+	fmt.Println()
+
+	// ==============================
+	// Append multiple elements
+	// ==============================
+
+	scores = append(scores, 200, 300)
+
+	fmt.Println("After append(200, 300)")
+	fmt.Println(scores)
+	fmt.Println("length  :", len(scores))
+	fmt.Println("capacity:", cap(scores))
+	fmt.Println()
 
 	scores = append(scores, 45, 55)
-	fmt.Println("after appending 45, 55", scores)
 
-	// if in case we r excedding capacity, go grows the backing array (usually doubles)
+	fmt.Println("After append(45, 55)")
+	fmt.Println(scores)
+	fmt.Println("length  :", len(scores))
+	fmt.Println("capacity:", cap(scores))
+	fmt.Println()
+
+	// ==========================================
+	// Exceeding capacity
+	// Go automatically allocates a larger
+	// backing array when needed.
+	// (Growth strategy is implementation-dependent)
+	// ==========================================
+
 	scores = append(scores, 60)
-	fmt.Println("after appending 60", scores, len(scores), cap(scores))
 
-	todos := []string{"do youtube", "workout everyday"}
+	fmt.Println("After append(60)")
+	fmt.Println(scores)
+	fmt.Println("length  :", len(scores))
+	fmt.Println("capacity:", cap(scores))
+	fmt.Println()
 
-	more := []string{"learn golang"}
+	// ==============================
+	// Access elements
+	// ==============================
 
-	//...
+	fmt.Println("First :", scores[0])
+	fmt.Println("Last  :", scores[len(scores)-1])
+	fmt.Println()
+
+	// ==============================
+	// Slice operations
+	// ==============================
+
+	fmt.Println(scores)                       // [100 200 300 45 55 60]
+	fmt.Println("scores[:3] =", scores[:3])   // [100 200 300]
+	fmt.Println("scores[2:] =", scores[2:])   // [300 45 55 60]
+	fmt.Println("scores[1:4] =", scores[1:4]) // [200 300 45]
+	fmt.Println()
+
+	// ==============================
+	// Append one slice into another
+	// ==============================
+
+	todos := []string{
+		"Do YouTube",
+		"Workout Everyday",
+	}
+
+	more := []string{
+		"Learn Golang",
+		"Read Clean Code",
+	}
+
 	todos = append(todos, more...)
-	fmt.Println(todos)
 
+	fmt.Println("Todos:", todos)
 }

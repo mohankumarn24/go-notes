@@ -6,41 +6,42 @@ import (
 )
 
 func main() {
+	// Example: Failure path
+	fmt.Println("Case 1: Fail Early")
 
-	// defer resp.body.Close()
-
-	// fmt.Println("Case 1: success")
-	// if err := doWork(true); err != nil {
-	// 	fmt.Println("error:", err)
-	// }
-
-	fmt.Println("Case 1: fail early")
 	if err := doWork(false); err != nil {
-		fmt.Println("error:", err)
+		fmt.Println("Error:", err)
 	}
+
+	// Uncomment to test the success path.
+	/*
+		fmt.Println("\nCase 2: Success")
+
+		if err := doWork(true); err != nil {
+			fmt.Println("Error:", err)
+		}
+	*/
 }
 
 func doWork(success bool) error {
+	// Simulate acquiring a resource.
+	fmt.Println("Start: Resource Acquired")
 
-	// resource related
-	// start message -> resource acquired
-	// cleanup message -> recource released
+	// Common uses of defer:
+	// - defer file.Close()
+	// - defer resp.Body.Close()
+	// - defer mutex.Unlock()
 
-	fmt.Println("start: resource acquired")
-
-	// defer will guranntee this runs at the end of this func
-	// both the paths
-	// - success return
-	// errors return - early
-
-	defer fmt.Println("cleanup: resource released")
+	// defer guarantees this runs before the function returns,
+	// whether it returns normally or returns early due to an error.
+	defer fmt.Println("Cleanup: Resource Released")
 
 	if !success {
-		return errors.New("something went wrong. i am returning early")
+		return errors.New("something went wrong; returning early")
 	}
 
-	fmt.Println("work: doing something imp")
-	fmt.Println("work: this work is done")
+	fmt.Println("Work: Doing something important")
+	fmt.Println("Work: Completed")
 
 	return nil
 }

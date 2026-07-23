@@ -3,17 +3,18 @@ package main
 import "fmt"
 
 func main() {
-
-	for i := 1; i <= 5; i++ {
-		fmt.Println(i)
+	// Traditional for loop
+	for i := 0; i < 5; i++ {
+		fmt.Println("i:", i)
 	}
 
-	N := 10
+	// Sum numbers from 1 to N-1
+	n := 10
 	sum := 0
 
-	for i := 1; i <= N; i++ {
-		sum = sum + i
+	for i := 0; i < n; i++ {
+		sum += i
 	}
 
-	fmt.Println(sum)
+	fmt.Println("Sum:", sum)
 }

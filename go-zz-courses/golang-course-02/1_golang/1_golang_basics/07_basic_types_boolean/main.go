@@ -1,22 +1,33 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	isLogged := true // inferred as boolean type
+	// Boolean variables
+	isLogged := true
 	isAdmin := true
 	hasSubscription := false
 
-	// AND &&
+	// Logical operators
 	canOpenDashboard := isLogged && hasSubscription
-
 	canDeletePost := isAdmin || (isLogged && hasSubscription)
 
-	fmt.Println(canOpenDashboard, canDeletePost)
+	fmt.Println("Can Open Dashboard:", canOpenDashboard)
+	fmt.Println("Can Delete Post:", canDeletePost)
 
-	age := 2
-	isAdult := age > 18
-	fmt.Println(isAdult)
+	// Comparison operators
+	age := 20
+	isAdult := age >= 18
+
+	fmt.Println("Is Adult:", isAdult)
+
+	fmt.Println("10 > 5 :", 10 > 5)
+	fmt.Println("10 < 5 :", 10 < 5)
+	fmt.Println("10 >= 10:", 10 >= 10)
+	fmt.Println("10 <= 9 :", 10 <= 9)
+	fmt.Println("10 == 10:", 10 == 10)
+	fmt.Println("10 != 5 :", 10 != 5)
+
+	// Logical NOT
+	fmt.Println("!isLogged:", !isLogged)
 }

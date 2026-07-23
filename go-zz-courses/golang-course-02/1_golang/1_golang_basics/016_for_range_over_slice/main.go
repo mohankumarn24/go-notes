@@ -5,12 +5,19 @@ import "fmt"
 func main() {
 	views := []int{10, 20, 45, 50, 60}
 
-	// for range
+	// Iterate over a slice using range.
+	// range returns index and value.
 	total := 0
+
 	for i, v := range views {
-		fmt.Println("day", i, "views", v)
-		total = total + v
+		fmt.Println("Day:", i, "Views:", v)
+		total += v
 	}
 
-	fmt.Println(total)
+	fmt.Println("Total Views:", total)
+
+	// Ignore the index using the blank identifier (_)
+	for _, v := range views {
+		fmt.Println("Views:", v)
+	}
 }
