@@ -6,40 +6,55 @@ import (
 )
 
 func main() {
-	// waitgroups helps you to wait
 
-	// run work concurrently + collect results
-
-	// pipe -> send values between goroutines
-
-	// one goroutine sends:   ch <- value
-	// another receives: value := <- ch
-
-	// make(chan T)
+	// Channel:
+	// A channel is a communication pipe between goroutines.
+	// One goroutine sends data, another goroutine receives it.
 
 	type User struct {
 		ID   int
 		Name string
 	}
 
-	// carries the User values
+	// Create an unbuffered channel that can carry User values.
 	ch := make(chan User)
 
-	// worker goroutine
+	// Worker goroutine
 	go func() {
-		// simulate slow work
+
+		// Simulate a slow operation
+		// (Database call, HTTP request, Microservice call, etc.)
 		time.Sleep(200 * time.Millisecond)
 
-		// Send: blocks until main receives
-		// unbuffered channel , send + receives is a handshake
-		ch <- User{ID: 100, Name: "Sangam"}
+		fmt.Println("Worker: sending user...")
 
+		// Send a User into the channel.
+		// Since this is an unbuffered channel,
+		// the send waits until another goroutine receives it.
+		ch <- User{
+			ID:   100,
+			Name: "Sangam",
+		}
+
+		fmt.Println("Worker: user sent")
 	}()
 
-	fmt.Println("main: waiting to receive user...")
+	fmt.Println("Main: waiting to receive user...")
 
+	// Receive a User from the channel.
+	// If nothing has been sent yet, main blocks here.
 	u := <-ch
 
-	fmt.Println("main: now go user", u, u.ID, u.Name)
-
+	fmt.Println("Main: received user:", u)
+	fmt.Println("ID:", u.ID)
+	fmt.Println("Name:", u.Name)
 }
+
+/*
+Main: waiting to receive user...
+Worker: sending user...
+Worker: user sent
+Main: received user: {100 Sangam}
+ID: 100
+Name: Sangam
+*/

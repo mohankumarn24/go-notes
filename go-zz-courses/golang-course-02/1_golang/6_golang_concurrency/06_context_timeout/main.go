@@ -7,33 +7,51 @@ import (
 )
 
 func main() {
-	// stuck ?
-	// too long -> DB
-	// context.Context
-	// ctx.Done()
 
+	// Context
+	// -------
+	// Context is used to:
+	// 1. Set timeouts.
+	// 2. Cancel long-running work.
+	// 3. Propagate cancellation across goroutines.
+
+	// Create a context that automatically expires after 450 ms.
 	ctx, cancel := context.WithTimeout(context.Background(), 450*time.Millisecond)
 
+	// Always call cancel to release resources.
 	defer cancel()
 
+	// Start a slow worker.
 	go slowWork(ctx)
 
-	// main waits until context ends
+	fmt.Println("Main: waiting for context to finish...")
+
+	// Wait until the context is cancelled or times out.
 	<-ctx.Done()
 
-	fmt.Println("main: context ended", ctx.Err())
-	fmt.Println("main:exit")
+	fmt.Println("Main: context ended ->", ctx.Err())
+	fmt.Println("Main: exiting")
 }
-
-// select + time.After
-// context.withtimeout + ctx.Done()
 
 func slowWork(ctx context.Context) {
-	select {
-	case <-time.After(700 * time.Millisecond):
-		return
 
+	fmt.Println("Worker: started")
+
+	select {
+
+	// Simulate a slow operation (700 ms).
+	case <-time.After(700 * time.Millisecond):
+		fmt.Println("Worker: completed successfully")
+
+	// Context timed out or was cancelled.
 	case <-ctx.Done():
-		return
+		fmt.Println("Worker: cancelled ->", ctx.Err())
 	}
 }
+
+/*
+Main: waiting for context to finish...
+Worker: started
+Main: context ended -> context deadline exceeded
+Main: exiting
+*/

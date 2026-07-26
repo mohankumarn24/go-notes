@@ -6,35 +6,48 @@ import (
 )
 
 func main() {
-	// select -> switch for ur channels
-	// it lets a goroutine wait on multiple channels operations at once
 
-	// give me res but dont hang forever
-	// user involvements -> user cancels or user is doing any action -> stop
-	// timeout -> stop
+	// select
+	// ------
+	// Waits on multiple channel operations.
+	// Executes the first case that becomes ready.
+	//
+	// Common use cases:
+	// 1. Wait for a worker result.
+	// 2. Timeout if it takes too long.
+	// 3. Handle cancellation (context.Done()).
 
+	// Channel that carries the worker's result.
 	resultCh := make(chan string)
 
-	// worker goroutine
-
+	// Worker Goroutine
 	go func() {
-		// simulate slow work / consider u r doing a network call
+
+		// Simulate a slow operation
+		// (Database call, HTTP request, Microservice call, etc.)
 		time.Sleep(40 * time.Millisecond)
 
-		resultCh <- "worker: success"
-
+		resultCh <- "Worker: success"
 	}()
 
-	// timeout channel
+	// Timeout channel.
+	// After 250 ms, Go automatically sends a value on this channel.
 	timeoutCh := time.After(250 * time.Millisecond)
 
+	// Wait for whichever happens first.
 	select {
-	case res := <-resultCh:
-		fmt.Println("main: go result", res)
+
+	case result := <-resultCh:
+		fmt.Println("Main: received result ->", result)
 
 	case <-timeoutCh:
-		fmt.Println("main: timeout happened, stop waiting")
+		fmt.Println("Main: timeout occurred. Stopped waiting.")
 	}
 
-	fmt.Println("main: work is now done")
+	fmt.Println("Main: work completed")
 }
+
+/*
+Main: received result -> Worker: success
+Main: work completed
+*/

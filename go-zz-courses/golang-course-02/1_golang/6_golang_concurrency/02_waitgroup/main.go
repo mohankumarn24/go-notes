@@ -17,7 +17,7 @@ func main() {
 
 	go func() {
 
-		defer wg.Done()
+		defer wg.Done() // Notify WaitGroup when finished.
 
 		fmt.Println("task 1")
 		time.Sleep(250 * time.Millisecond)
@@ -27,7 +27,7 @@ func main() {
 
 	go func() {
 
-		defer wg.Done()
+		defer wg.Done() // Notify WaitGroup when finished.
 
 		fmt.Println("task 2")
 		time.Sleep(150 * time.Millisecond)
@@ -37,7 +37,7 @@ func main() {
 
 	go func() {
 
-		defer wg.Done()
+		defer wg.Done() // Notify WaitGroup when finished.
 
 		fmt.Println("task 3")
 		time.Sleep(199 * time.Millisecond)
