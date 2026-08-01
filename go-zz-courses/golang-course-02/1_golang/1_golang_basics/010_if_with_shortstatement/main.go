@@ -3,13 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	items := 3
-	pricePerItem := 40
+	jackets := 2
+	pricePerJacket := 60000
 
 	// Short statement with if
-	if total := items * pricePerItem; total >= 100 {
-		fmt.Println("Eligible for Free Shipping")
+	if total := jackets * pricePerJacket; total >= 100000 {
+		fmt.Println("Eligible for VIP Discount")
 	} else {
-		fmt.Println("Not Eligible for Free Shipping")
+		fmt.Println("Not Eligible for VIP Discount")
 	}
 }
+
+// Eligible for VIP Discount

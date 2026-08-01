@@ -3,23 +3,28 @@ package main
 import "fmt"
 
 func main() {
-	score := 72
+	purchaseAmount := 72000
 
 	// if - else if - else
-	if score >= 90 {
-		fmt.Println("Grade: A")
-	} else if score >= 75 {
-		fmt.Println("Grade: B")
-	} else if score >= 45 {
-		fmt.Println("Grade: C")
+	if purchaseAmount >= 100000 {
+		fmt.Println("Membership: Platinum")
+	} else if purchaseAmount >= 75000 {
+		fmt.Println("Membership: Gold")
+	} else if purchaseAmount >= 45000 {
+		fmt.Println("Membership: Silver")
 	} else {
-		fmt.Println("Grade: D")
+		fmt.Println("Membership: Bronze")
 	}
 
 	// Short statement with if
-	if passed := score >= 45; passed {
-		fmt.Println("Result: Pass")
+	if isEligible := purchaseAmount >= 45000; isEligible {
+		fmt.Println("Is eligible for Exclusive Sale: ", isEligible)
 	} else {
-		fmt.Println("Result: Fail")
+		fmt.Println("Is eligible for Exclusive Sale: ", isEligible)
 	}
 }
+
+/*
+Membership: Silver
+Is eligible for Exclusive Sale:  true
+*/

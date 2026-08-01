@@ -7,31 +7,40 @@ func main() {
 	views1 := 1000
 	views2 := 2000
 	totalViews := views1 + views2
+	fmt.Println("Total Views:", totalViews) // 3000
 
 	likes := 10
 	likes++
-	likes++
+	fmt.Println("Likes:", likes) // 11
 
-	avgViews := totalViews / 2 // Integer division
-
-	fmt.Println("Total Views:", totalViews)
-	fmt.Println("Likes:", likes)
-	fmt.Println("Average Views:", avgViews)
+	// Integer division
+	avgViews := totalViews / 2
+	fmt.Println("Average Views:", avgViews) // 1500
 
 	// Floating-point arithmetic
 	rating1 := 4.5
 	rating2 := 5.1
-
 	avgRating := (rating1 + rating2) / 2
-
-	fmt.Println("Average Rating:", avgRating)
+	fmt.Println("Average Rating:", avgRating) // 4.8
 
 	// Arithmetic operators
-	a, b := 10, 3
+	a, b := 7, 2
 
-	fmt.Println("Addition:", a+b)
-	fmt.Println("Subtraction:", a-b)
-	fmt.Println("Multiplication:", a*b)
-	fmt.Println("Division:", a/b) // Integer division
-	fmt.Println("Modulus:", a%b)
+	fmt.Println("Addition:", a+b)       // 9
+	fmt.Println("Subtraction:", a-b)    // 5
+	fmt.Println("Multiplication:", a*b) // 14
+	fmt.Println("Division:", a/b)       // Integer division: 3
+	fmt.Println("Modulus:", a%b)        // 1
 }
+
+/*
+Total Views: 3000
+Likes: 12
+Average Views: 1500
+Average Rating: 4.8
+Addition: 13
+Subtraction: 7
+Multiplication: 30
+Division: 3
+Modulus: 1
+*/

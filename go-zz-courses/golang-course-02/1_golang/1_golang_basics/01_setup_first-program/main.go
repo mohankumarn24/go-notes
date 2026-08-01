@@ -14,5 +14,9 @@ import "fmt"
 // Go starts execution from main().
 
 func main() {
-	fmt.Println("Hello Go")
+	fmt.Println("hello, world!!")
 }
+
+/*
+hello, world!!
+*/
