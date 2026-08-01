@@ -38,7 +38,6 @@ func main() {
 	// Go doesn't have a while keyword.
 	// Use for as a while loop.
 	j := 0
-
 	for j < 10 {
 		fmt.Println("While: ", j)
 		j++
@@ -48,7 +47,6 @@ func main() {
 	// Use an infinite loop with break when the body
 	// must execute at least once.
 	doCount := 1
-
 	for {
 		fmt.Println("Do-While: ", doCount)
 		doCount++
