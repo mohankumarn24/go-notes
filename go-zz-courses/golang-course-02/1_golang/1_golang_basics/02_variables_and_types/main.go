@@ -4,17 +4,17 @@ import "fmt"
 
 func main() {
 	// var variableName type = value
-	var foundedYear int = 1975
-	fmt.Println("Founded Year:", foundedYear) // 1975
+	var year int = 1975
+	fmt.Println("Year:", year) // Year: 1975
 
 	var jacketPrice float64 = 24999.99
-	fmt.Println("Jacket Price:", jacketPrice) // 24999.99
+	fmt.Println("Jacket Price:", jacketPrice) // Jacket Price: 24999.99
 
 	// Declaration without initialization
 	// Zero value is assigned automatically.
 	var brandName string
 	brandName = "Emporio Armani"
-	fmt.Println("Brand Name:", brandName) // Emporio Armani
+	fmt.Println("Brand Name:", brandName) // Brand Name: Emporio Armani
 }
 
 /*

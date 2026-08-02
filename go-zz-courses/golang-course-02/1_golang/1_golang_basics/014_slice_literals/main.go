@@ -102,8 +102,9 @@ func main() {
 
 	// Copy a slice
 	printHeader("Copy a Slice")
-	src := []int{10, 20, 30}
-	dest := make([]int, len(src)) // Create destination slice
+	src := []int{10, 20, 30}      // 'src' has length = 3, capacity = 3.
+	dest := make([]int, len(src)) // Create destination slice. 'dest' is created with length = 3, capacity = 3
+	// initial value: Zero values ([0 0 0])
 
 	copy(dest, src)                   // Copy elements from 'src' to 'dest'
 	src[0] = 99                       // Changing 'src' does not affect 'dest'
